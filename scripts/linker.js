@@ -18,9 +18,7 @@ module.exports = function (robot) {
 	var exists = function (url) {
 		return new Promise(function(resolve, reject) {
 			https.get(url, function (resp, err) {
-				if (err) {
-					reject();
-				} else if (resp.statusCode === 200) {
+				if (!err && resp.statusCode === 200) {
 					resolve();
 				}
 				reject();
